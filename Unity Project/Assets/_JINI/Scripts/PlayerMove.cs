@@ -7,11 +7,14 @@ public class PlayerMove : MonoBehaviour
 {
     public float speed = 5.0f;
     public Vector2 margin; //뷰포트좌표는 0.0f~1.0f사이의 값
- 
+
+    public Transform[] mini;
+
     // Start is called before the first frame update
     void Start()
     {
         margin = new Vector2(0.08f, 0.05f);
+        mini = gameObject.GetComponentsInChildren<Transform>(true);
     }
 
     // Update is called once per frame
@@ -19,7 +22,14 @@ public class PlayerMove : MonoBehaviour
     {
        
         Move();
-
+      
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            foreach (Transform go in mini)
+            {
+                go.gameObject.SetActive(true);
+            }
+        }
        
     }
 
