@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     //총알이 생성된 후 발사하고 싶은 방향(위)으로 움직인다
 
     public float speed = 10.0f;
+
     // Start is called before the first frame update
     void Start()
     {
