@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class Enemy : MonoBehaviour
 
     public float speed = 10.0f;
 
-  
     // Update is called once per frame
     void Update()
     {
@@ -19,10 +19,15 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
         //자기자신도 없애고
         //충돌된 오브젝트도 없앤다.
-        Destroy(gameObject);
         Destroy(collision.gameObject);
+        Destroy(gameObject);
+
+        //점수 추가
+        if (collision.gameObject.name.Contains("Bullet"))
+        {
+            Score.instance.AddScore();
+        }
     }
 }

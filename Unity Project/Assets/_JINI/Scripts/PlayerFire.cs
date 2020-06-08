@@ -33,25 +33,26 @@ public class PlayerFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //Fire();
-        FireRay();
+       // Fire();
+       // FireRay();
 
     }
 
    //총알 발사 함수
-   //private void Fire()
-   //{
-   //    //마우스 왼쪽 버튼 또는 왼쪽 컨트롤 키
-   //    if(Input.GetButtonDown("Fire1")) //인풋 매니저에 만들어져 있음
-   //    {
-   //        //총알공장에서 총알을 무한대로 찍어낼 수 있다.
-   //       GameObject bullet = Instantiate(bulletFactory, firePoint.transform.position, firePoint.transform.rotation);
-   //    }
-   //}
+   public void Fire()
+   {
+       
+         //마우스 왼쪽 버튼 또는 왼쪽 컨트롤 키
+         if(Input.GetButtonDown("Fire1")) //인풋 매니저에 만들어져 있음
+         {
+             //총알공장에서 총알을 무한대로 찍어낼 수 있다.
+            GameObject bullet = Instantiate(bulletFactory, firePoint.transform.position, firePoint.transform.rotation);
+         }
+    }
 
 
    //레이저 발사 함수
-    private void FireRay()
+    public void FireRay()
     {
      
         if(Input.GetButtonDown("Fire1"))
@@ -86,4 +87,9 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
+    public void OnFireButtonClick()
+    {
+        //총알공장에서 총알을 무한대로 찍어낼 수 있다.
+        GameObject bullet = Instantiate(bulletFactory, firePoint.transform.position, firePoint.transform.rotation);
+    }
 }
