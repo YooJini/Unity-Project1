@@ -16,6 +16,9 @@ public class PlayerFire : MonoBehaviour
     public float rayTime = 1.0f;
     private float timer = 0.0f;
 
+    //사운드 재생
+    AudioSource _audio;
+
     RaycastHit hit;
    
     // Start is called before the first frame update
@@ -27,14 +30,15 @@ public class PlayerFire : MonoBehaviour
         //중요!!!
         //게임오브젝트는 활성화/비활성화 => SetActive() 함수 사용
         //컴포넌트는 enabled 속성 사용
-       
+
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
        // Fire();
-       // FireRay();
+        FireRay();
 
     }
 
@@ -57,6 +61,9 @@ public class PlayerFire : MonoBehaviour
      
         if(Input.GetButtonDown("Fire1"))
         {
+            //레이저 사운드 재생
+            _audio.Play();
+
             lr.enabled = true;
             //라인 시작점, 끝점
             Vector3 pos = transform.position;

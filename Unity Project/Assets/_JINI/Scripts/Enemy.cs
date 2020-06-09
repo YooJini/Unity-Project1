@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
 
     public float speed = 10.0f;
 
+    public GameObject fxFactory;
+
     // Update is called once per frame
     void Update()
     {
@@ -24,10 +26,17 @@ public class Enemy : MonoBehaviour
         Destroy(collision.gameObject);
         Destroy(gameObject);
 
+        //이펙트 보여주기
+        ShowEffect();
+
         //점수 추가
         if (collision.gameObject.name.Contains("Bullet"))
         {
             Score.instance.AddScore();
         }
+    }
+    void ShowEffect()
+    {
+        GameObject fx = Instantiate(fxFactory, transform.position,transform.rotation);
     }
 }
