@@ -17,9 +17,9 @@ TagManager:
   - Enemy
   - Bullet
   - DestroyZone
-  - 
-  - 
-  - 
+  - Boss
+  - BossBullet
+  - Item
   - 
   - 
   - 

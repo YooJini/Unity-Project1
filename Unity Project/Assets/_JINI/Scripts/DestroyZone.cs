@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class DestroyZone : MonoBehaviour
 {
-    //트리거 감지 후 해당 오브젝트 삭제
     private void OnTriggerEnter(Collider other)
     {
-        //이곳에서 트리거에 감지된 오브젝트 제거하기 (총알, 에너미)
-        Destroy(other.gameObject);
+        
+        if(other.gameObject.name.Contains("Bullet"))
+        {
+            other.gameObject.SetActive(false);
+            //오브젝트풀에 추가만 해준다
+            if (GameObject.Find("Player"))
+            {
+                PlayerFire pf = GameObject.Find("Player").GetComponent<PlayerFire>();
+                pf.bulletPool.Enqueue(other.gameObject);
+            }
+        }
+        else
+            Destroy(other.gameObject);
     }
 }

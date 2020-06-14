@@ -16,7 +16,9 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         //아래로 이동해라
-        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        //transform.Translate(Vector3.down * speed * Time.deltaTime);
+        //아래로 이동해라
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)

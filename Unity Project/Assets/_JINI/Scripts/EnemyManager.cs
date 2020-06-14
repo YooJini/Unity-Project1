@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyFactory;     //에너미 공장 (에너미 프리팹)
     //public GameObject spawnPoint;     //스폰 위치
     public GameObject[] spawnPoints;    //스폰 위치 배열
-    float spawnTime = 1.0f;             //스폰타임 (몇초에 한번씩 생성?)
+    float spawnTime = 0.5f;             //스폰타임 (몇초에 한번씩 생성?)
     float curTime = 0.0f;               //누적타임
         
 
@@ -36,7 +36,7 @@ public class EnemyManager : MonoBehaviour
             //누적된 현재시간을 0.0초로 초기화 (반드시 해줘야 함)
             curTime = 0.0f;
             //스폰타임을 랜덤으로
-            spawnTime = Random.Range(0.5f, 2.0f);
+            spawnTime = Random.Range(0.3f, 1.0f);
 
             //에너미 생성
             GameObject enemy = Instantiate(enemyFactory);

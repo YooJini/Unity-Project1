@@ -19,6 +19,7 @@ public class BackGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!GameObject.Find("Boss"))
         BackGroundScroll();
     }
 

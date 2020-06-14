@@ -13,27 +13,27 @@ public class PlayerMove : MonoBehaviour
 
     public Transform[] mini;
 
+    private float bossTimer = 100.0f;
+    public GameObject boss;
+    private float startTime;
     // Start is called before the first frame update
     void Start()
     {
         margin = new Vector2(0.08f, 0.05f);
         mini = gameObject.GetComponentsInChildren<Transform>(true);
+        startTime = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-        Move();
-      
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Time.time-startTime>bossTimer && !boss.activeSelf)
         {
-            foreach (Transform go in mini)
-            {
-                go.gameObject.SetActive(true);
-            }
+            boss.SetActive(true);
         }
-       
+
+        Move();
+
     }
 
     //플레이어 이동 함수
@@ -87,13 +87,22 @@ public class PlayerMove : MonoBehaviour
         position.y = Mathf.Clamp(position.y, 0.0f+margin.y, 1.0f-margin.y);
         transform.position = Camera.main.ViewportToWorldPoint(position);
 
-       ////내가 만들어본 거
-       //Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
-       //Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-       //
-       //Vector3 position = transform.position;
-       //position.x = Mathf.Clamp(position.x, min.x + 0.5f, max.x - 0.5f);
-       //position.y = Mathf.Clamp(position.y, min.y + 0.5f, max.y - 0.5f);
-       //transform.position = position;
+        ////내가 만들어본 거
+        //Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        //Vector2 max = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+        //
+        //Vector3 position = transform.position;
+        //position.x = Mathf.Clamp(position.x, min.x + 0.5f, max.x - 0.5f);
+        //position.y = Mathf.Clamp(position.y, min.y + 0.5f, max.y - 0.5f);
+        //transform.position = position;
+    }
+
+    public void ActiveMini()
+    {
+        foreach (Transform go in mini)
+        {
+            go.gameObject.SetActive(true);
+        }
+     
     }
 }
